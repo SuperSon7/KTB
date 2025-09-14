@@ -26,7 +26,7 @@ public class Task implements Runnable {
     public void run() {};
 
 
-    public void cancle() {
+    public void cancel() {
         this.cancelled = true;
         if (this.status == TaskStatus.RUNNING || this.status == TaskStatus.PENDING) {
             this.status = TaskStatus.CANCELED;

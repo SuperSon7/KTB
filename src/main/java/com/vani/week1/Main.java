@@ -23,13 +23,13 @@ public class Main {
             System.out.println(("생성할 작업 개수를 입력하세요: "));
             int taskCount = scanner.nextInt();
 
-            System.out.println(("최소 실행 시간(s)을 입력하세요: "));
+            System.out.println(("최소 실행 시간(ms)을 입력하세요: "));
             long minExecutionMs = scanner.nextInt();
 
-            System.out.println(("최대 실행 시간(s)을 입력하세요: "));
+            System.out.println(("최대 실행 시간(ms)을 입력하세요: "));
             long maxExecutionMs = scanner.nextInt();
 
-            System.out.println(("시간 초과 기준(s)을 입력하세요: "));
+            System.out.println(("시간 초과 기준(ms)을 입력하세요: "));
             int timeout = scanner.nextInt();
 
             scanner.nextLine(); // 버퍼 비우기
@@ -57,7 +57,7 @@ public class Main {
             processor.start();
 
             // 작업 제출 및 종료 대기
-            System.out.println("/n총 " + tasks.size() + "개의 작업을 제출합니다.");
+            System.out.println("\n총 " + tasks.size() + "개의 작업을 제출합니다.");
             tasks.forEach(processor::submit);
 
             System.out.println("엔터 키를 누르면 프로그램을 종료합니다...");

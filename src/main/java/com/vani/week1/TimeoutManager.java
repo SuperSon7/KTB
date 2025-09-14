@@ -29,7 +29,7 @@ public class TimeoutManager implements Runnable {
                         if (runningTime > timeoutMs) {
                             System.out.printf("[TimeoutManager] Task %s 작업이 시간(%dms)을 초과했습니다. 중단 요청!\n",
                                     task.getTaskId(), timeoutMs);
-                            task.cancle();
+                            task.cancel();
                         }
                     }
                 }

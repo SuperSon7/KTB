@@ -93,7 +93,6 @@ public class TaskProcessor {
                 runningTasks.remove(task.getTaskId());
                 completedTasks.add(task);
                 printTaskResultToCli(task);
-                //로거
             }
 
         };
