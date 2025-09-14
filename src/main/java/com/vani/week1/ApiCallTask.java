@@ -20,7 +20,7 @@ public class ApiCallTask extends NetworkTask {
         setStatus(TaskStatus.RUNNING);
         try {
             System.out.printf("... [%s] API 호출 중...\n", getTaskId());
-            Thread.sleep(simulatedDurationMs);
+            Thread.sleep(simulatedDuration);
             if (cancelled) { setStatus(TaskStatus.CANCELED); return; }
             if (Math.random() < 0.1) { throw new RuntimeException("API 응답 시간 초과!"); }
             setStatus(TaskStatus.SUCCESS);

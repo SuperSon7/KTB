@@ -8,16 +8,14 @@ public class Task implements Runnable {
     protected final long simulatedDuration;
     protected TaskStatus status;
     protected volatile boolean cancelled = false;
-    //private LocalDateTime creationTime;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private Exception exception;
+    private Exception error;
 
     public Task(String taskId, long simulatedDuration) {
         this.taskId = taskId;
         this.simulatedDuration = simulatedDuration;
         this.status = TaskStatus.PENDING;
-        this.creationTime = LocalDateTime.now();
     }
 
     public String getDescription() {
@@ -50,8 +48,8 @@ public class Task implements Runnable {
         return null;
     }
     protected void setStatus(TaskStatus status) { this.status = status; }
-    public synchronized void setStartTime(LocalDateTime startTime) { this.startTime = LocalDateTime.now(); }
-    public synchronized void setEndTime(LocalDateTime endTime) { this.endTime = LocalDateTime.now(); }
+    public synchronized void setStartTime() { this.startTime = LocalDateTime.now(); }
+    public synchronized void setEndTime() { this.endTime = LocalDateTime.now(); }
     protected synchronized void setError(Exception error) { this.error = error; }
 }
 

@@ -5,8 +5,9 @@ public class NetworkTask extends Task {
 
     public NetworkTask(String taskId, String targetUrl, long simulatedDuration) {
         super(taskId, simulatedDuration);
+
         if (targetUrl == null || targetUrl.isBlank()) {
-            throw new IllegalAccessException("URL이 비어있을 수 없습니다.");
+            throw new IllegalArgumentException("URL이 비어있거나 null일 수 없습니다.");
         }
         this.targetUrl = targetUrl;
     }
