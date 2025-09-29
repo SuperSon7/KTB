@@ -1,0 +1,64 @@
+# IDE/OS/Editor 관련 무시 파일 (Ignore files for IDE/OS/Editor)
+##############################################
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+target/
+bin/
+tmp/
+*.log
+*.bak
+*.swp
+*~
+Thumbs.db
+.DS_Store
+
+# Gradle 관련 무시 파일 (Gradle specific ignores)
+##############################################
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# 자바 관련 무시 파일 (Java specific ignores)
+##############################################
+# 컴파일된 클래스 파일 (Compiled class files)
+*.class
+
+# 패키징된 파일 (Packaged files)
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+hs_err_pid*
+
+# 기타 파일 (Other files)
+# Eclipse / IntelliJ IDEA / NetBeans 관련
+out/
+/out/
+.metadata
+/target/
+
+# Spring Boot devtools restart (스프링 부트 개발 도구 재시작)
+/bin/
+
+# 로컬 설정 파일 (Local configuration files)
+# 필요하다면 주석 해제하여 사용
+# src/main/resources/application-local.properties
+# src/main/resources/application-dev.properties
+# src/main/resources/application-local.yml
+# src/main/resources/application-dev.yml
+
+# 키 저장소 파일 (Keystore files)
+*.jks
+*.p12
+
+# 환경 변수 설정 파일 (Environment variable files)
+.env
