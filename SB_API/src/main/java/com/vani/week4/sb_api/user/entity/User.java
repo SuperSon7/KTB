@@ -1,14 +1,12 @@
-package com.ktb.vani.jpa_practice.entity;
+package com.vani.week4.sb_api.user.entity;
 
+import com.vani.week4.sb_api.user.UserStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-/**
- * User와 Post 엔티티 구현하기
- */
 @Entity
 @Getter @Setter
 @Table(name = "users")

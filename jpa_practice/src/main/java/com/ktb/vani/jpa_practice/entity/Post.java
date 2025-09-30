@@ -7,6 +7,12 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
+/*
+데이터베이스 jpa_practice 에 post 테이블 생성
+스프링 코드에 post 엔티티 생성
+Post 엔티티에서 user 엔티티를 참조하는 필드를 만들어보세요
+ */
 @Entity
 @Getter
 @Setter
@@ -16,6 +22,7 @@ public class Post {
     private String id;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(length = 100)
@@ -34,7 +41,8 @@ public class Post {
     private LocalDateTime deleted_at;
 
     @Column(length = 20)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private PostStatus postStatus;
 
     //기본 생성자는 JPA의 필수 요구사항 무분별한 생성 방지 위해 public은 잘 안씀
     protected Post() {}
@@ -48,6 +56,6 @@ public class Post {
         this.like_count = 1;
         this.created_at = LocalDateTime.now();
         this.updated_at = LocalDateTime.now();
-        this.status = "posted";
+        this.postStatus = PostStatus.ACTIVE;
     }
 }
