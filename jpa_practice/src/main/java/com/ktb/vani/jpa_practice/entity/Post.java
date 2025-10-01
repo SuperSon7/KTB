@@ -16,6 +16,7 @@ Post 엔티티에서 user 엔티티를 참조하는 필드를 만들어보세요
 @Entity
 @Getter
 @Setter
+@Table(name = "posts")
 public class Post {
     @Id
     @Column(length = 26)
@@ -29,26 +30,22 @@ public class Post {
     private String title;
 
     private Integer view_count;
-
+    private Integer like_count;
     private Integer comment_count;
 
-    private Integer like_count;
-
     private LocalDateTime created_at;
-
     private LocalDateTime updated_at;
-
     private LocalDateTime deleted_at;
 
     @Column(length = 20)
     @Enumerated(EnumType.STRING)
-    private PostStatus postStatus;
+    private PostStatus status;
 
     //기본 생성자는 JPA의 필수 요구사항 무분별한 생성 방지 위해 public은 잘 안씀
     protected Post() {}
 
-    public Post(User user, String title) {
-        this.id = UUID.randomUUID().toString(); //실제 구현시에는 ULID라이브러리 가져와야함.
+    public Post(User user, String id, String title) {
+        this.id = id; //실제 구현시에는 ULID라이브러리 가져와야함.
         this.user = user;
         this.title = title;
         this.view_count = 1;
@@ -56,6 +53,6 @@ public class Post {
         this.like_count = 1;
         this.created_at = LocalDateTime.now();
         this.updated_at = LocalDateTime.now();
-        this.postStatus = PostStatus.ACTIVE;
+        this.status = PostStatus.ACTIVE;
     }
 }

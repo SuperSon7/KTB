@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User와 Post 엔티티 구현하기
@@ -31,6 +33,9 @@ public class User {
     @Column(length = 10)
     private UserStatus userStatus;
 
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts = new ArrayList<>();
+
     protected User() {}
     public User(String id, String email, String provider) {
         this.id = id;
@@ -39,5 +44,16 @@ public class User {
         this.updated_at = LocalDateTime.now();
         this.provider = provider;
         this.userStatus = UserStatus.ACTIVE;
+    }
+
+    //편의 메서드 : 양쪽 동기화
+    public void addPost(Post post) {
+        this.posts.add(post);
+        post.setUser(this);
+    }
+
+    public void removePost(Post post) {
+        this.posts.remove(post);
+        post.setUser(null);
     }
 }
