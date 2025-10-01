@@ -3,6 +3,7 @@ package com.ktb.vani.jpa_practice.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -35,6 +36,10 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "profile_id", unique = true)
+    private UserProfile userProfile;
 
     protected User() {}
     public User(String id, String email, String provider) {
