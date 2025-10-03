@@ -1,16 +1,17 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/jpa_prac?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/practice?serverTimezone=UTC&useSSL=false
     username: root
     password: zsed1235
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
+        use_sql_comments: true
 
   logging:
     level:

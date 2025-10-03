@@ -1,13 +1,17 @@
-package com.vani.week4.sb_api.user.entity;
+package com.vani.week4.coummnity.user.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * User와 Post 엔티티 구현하기
+ */
 @Entity
 @Getter @Setter
 @Table(name = "users")
@@ -30,11 +34,11 @@ public class User {
     @Column(length = 10)
     private UserStatus userStatus;
 
-    @OneToMany(mappedBy = "user") //Post엔티티안의 user필드가 관계 주인
-    private List<Post> posts=new ArrayList<>();
+//    @OneToMany(mappedBy = "user")
+//    private List<Post> posts = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "profile_id")
+    @JoinColumn(name = "profile_id", unique = true)
     private UserProfile userProfile;
 
     protected User() {}
@@ -47,14 +51,14 @@ public class User {
         this.userStatus = UserStatus.ACTIVE;
     }
 
-    //편의 메서드 : 동기화용
-    public void addPost(Post post) {
-        this.posts.add(post);
-        post.setUser(this);
-    }
-
-    public void removePost(Post post) {
-        this.posts.remove(post);
-        post.setUser(null);
-    }
+    //편의 메서드 : 양쪽 동기화
+//    public void addPost(Post post) {
+//        this.posts.add(post);
+//        post.setUser(this);
+//    }
+//
+//    public void removePost(Post post) {
+//        this.posts.remove(post);
+//        post.setUser(null);
+//    }
 }
