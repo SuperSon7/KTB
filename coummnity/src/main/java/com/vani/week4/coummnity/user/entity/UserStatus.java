@@ -1,4 +1,4 @@
-package com.vani.week4.sb_api.user;
+package com.vani.week4.coummnity.user.entity;
 
 public enum UserStatus {
     ACTIVE,
